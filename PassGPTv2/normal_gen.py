@@ -136,14 +136,11 @@ def gen_parallel(vocab_file, batch_size, test_model_path, N, num_gpus, gpu_index
                 t.join()
                 if not t.is_alive():
                     new_passwords = t.get_result()
-                    new_num = len(new_passwords)
                     total_passwords += new_passwords
-                    batch_index = temp_threads[t]
                     #print('[{}/{}] generated {}.'.format(temp_threads[t]+1, total_round, new_num))
                     threads.pop(t)
 
-                    # Gửi tiến trình loading qua socketio
-                    progress = (len(total_passwords) + 1) / total_round
+                    progress = (len(set(total_passwords)) + 1) / total_round
                     socketio.emit('progress_update', {'progress': int(progress * 100)})
         total_passwords = set(total_passwords)
 
