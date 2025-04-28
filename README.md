@@ -4,8 +4,10 @@ Hệ thống sinh mật khẩu phục vụ các cuộc tấn công Brute Force h
 ![image](https://github.com/user-attachments/assets/078589fe-d9ed-46d1-bc44-4ec9a7d893a8)
 
 Quá trình training (left) và quá trình sinh (right) của PassGPTv2. Các số trong hình tương ứng với các chỉ mục sau khi mã hóa. Các trường hợp, trong đó số bị che khuất, biểu thị các dự đoán không chính xác, trong khi các số được tô sáng màu đỏ biểu thị các chỉ mục dự đoán của mật khẩu mới.
-## Lưu ý:
-Bạn nên tải bộ cuda về máy tính để mô hình có thể hoạt động dựa trên gpu. Có thể tham khảo link https://schoolforengineering.com/tutorial/install-tensorflow-cuda-gpu-windows-10/
+## Yêu cầu cài đặt:
+
+Sử dụng: Python 3.8 được cài đặt ở https://www.python.org/downloads/release/python-380/ (Lưu ý không nên sử dụng phiên bản cao hơn vì chưa tương thích)
+Tải bộ cuda về máy tính để mô hình có thể hoạt động dựa trên gpu. Có thể tham khảo link https://schoolforengineering.com/tutorial/install-tensorflow-cuda-gpu-windows-10/
 
 ## Khởi chạy chương trình
 Vào terminal của folder
