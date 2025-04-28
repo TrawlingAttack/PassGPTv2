@@ -7,6 +7,7 @@ Quá trình training (left) và quá trình sinh (right) của PassGPTv2. Các s
 ## Yêu cầu cài đặt:
 
 Sử dụng: Python 3.8 được cài đặt ở https://www.python.org/downloads/release/python-380/ (Lưu ý không nên sử dụng phiên bản cao hơn vì chưa tương thích)
+
 Tải bộ cuda về máy tính để mô hình có thể hoạt động dựa trên gpu. Có thể tham khảo link https://schoolforengineering.com/tutorial/install-tensorflow-cuda-gpu-windows-10/
 
 ## Khởi chạy chương trình
