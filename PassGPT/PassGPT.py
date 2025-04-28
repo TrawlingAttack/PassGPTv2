@@ -108,25 +108,6 @@ def RunPassGPT(lenght_pass, number_pass,socketio,list_prefix):
         else:
             break
     return list_new_password
-    
-    # data_files = {}
-    
-    # if args.train_data_path is not None:
-    #     data_files["train"] = [args.train_data_path]
-        
-    # if args.eval_data_path is not None:
-    #     data_files["eval"] = [args.eval_data_path]
-        
-    # if len(data_files):
-    #     dataset = load_dataset('text', data_files=data_files)
-        
-    #     if args.train_data_path:
-    #         train_passwords = set(dataset["train"]["text"])
-    #         inter_with_train = len(train_passwords.intersection(set(list_new_password)))
-
-    #     if args.eval_data_path:        
-    #         eval_passwords = set(dataset["eval"]["text"])
-    #         inter_with_eval = len(eval_passwords.intersection(set(list_new_password)))
 
 def list_passwords():
     global list_new_password
