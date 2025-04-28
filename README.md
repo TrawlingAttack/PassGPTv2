@@ -13,11 +13,9 @@ Tải bộ cuda về máy tính để mô hình có thể hoạt động dựa t
 Vào terminal của folder
 
 Tải các thư viện cần thiết
-
   pip install -r requirements.txt
   
 Khởi chạy file app.py
-
   python app.py
   
 Nếu thoát không sử dụng thì Ctrl + C
