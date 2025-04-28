@@ -1,0 +1,16 @@
+{"time":"2025-03-13T20:26:16.5702126+07:00","level":"INFO","msg":"using version","core version":"0.18.3"}
+{"time":"2025-03-13T20:26:16.5707271+07:00","level":"INFO","msg":"created symlink","path":"D:\\NCKH_2024\\PCFG_WEB\\PCFG_WEB\\PassGPT_new\\wandb\\offline-run-20250313_202616-s3tq82zt\\logs\\debug-core.log"}
+{"time":"2025-03-13T20:26:16.7919191+07:00","level":"INFO","msg":"created new stream","id":"s3tq82zt"}
+{"time":"2025-03-13T20:26:16.7919191+07:00","level":"INFO","msg":"stream: started","id":"s3tq82zt"}
+{"time":"2025-03-13T20:26:16.7919191+07:00","level":"INFO","msg":"handler: started","stream_id":{"value":"s3tq82zt"}}
+{"time":"2025-03-13T20:26:16.7919191+07:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"s3tq82zt"}}
+{"time":"2025-03-13T20:26:16.7919191+07:00","level":"INFO","msg":"sender: started","stream_id":{"value":"s3tq82zt"}}
+{"time":"2025-03-13T20:26:16.7988833+07:00","level":"INFO","msg":"wandb-core","!BADKEY":null}
+{"time":"2025-03-13T20:26:16.8004224+07:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-13T20:26:17.6387381+07:00","level":"INFO","msg":"stream: closing","id":"s3tq82zt"}
+{"time":"2025-03-13T20:26:17.6387381+07:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-13T20:26:17.676157+07:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-03-13T20:26:17.676157+07:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"s3tq82zt"}}
+{"time":"2025-03-13T20:26:17.676157+07:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"s3tq82zt"}}
+{"time":"2025-03-13T20:26:17.676157+07:00","level":"INFO","msg":"sender: closed","stream_id":{"value":"s3tq82zt"}}
+{"time":"2025-03-13T20:26:17.6766599+07:00","level":"INFO","msg":"stream: closed","id":"s3tq82zt"}

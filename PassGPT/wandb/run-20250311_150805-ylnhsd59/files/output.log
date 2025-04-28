@@ -1,0 +1,6 @@
+  0%|                                                                                                                                                      | 0/3 [00:00<?, ?it/s]You're using a RobertaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3/3 [00:10<00:00,  3.46s/it]
+{'train_runtime': 12.5528, 'train_samples_per_second': 25.811, 'train_steps_per_second': 0.239, 'train_loss': 3.914421717325846, 'epoch': 3.0}
+===> Training completed after 0:00:13.452500. Storing last version.
+===> Deleting previous checkpoints
+===> Training finished succesfully :)

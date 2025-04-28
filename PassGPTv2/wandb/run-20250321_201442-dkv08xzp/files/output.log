@@ -1,0 +1,10 @@
+  0%|                                                                                                                                           | 0/2720550 [00:00<?, ?it/s]C:\Users\minhk\AppData\Local\Programs\Python\Python38\lib\site-packages\transformers\models\gpt2\modeling_gpt2.py:545: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  attn_output = torch.nn.functional.scaled_dot_product_attention(
+  0%|                                                                                                                              | 46/2720550 [00:27<427:43:10,  1.77it/s]Traceback (most recent call last):
+  File "train.py", line 131, in <module>
+    trainer.train()
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python38\lib\site-packages\transformers\trainer.py", line 2123, in train
+    return inner_training_loop(
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python38\lib\site-packages\transformers\trainer.py", line 2483, in _inner_training_loop
+    if (
+KeyboardInterrupt

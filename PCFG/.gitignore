@@ -1,0 +1,29 @@
+# Standard "temp" file types that should not be committed
+*.i
+*.o
+*.rec
+*.swp
+*.swo
+*.pyc
+
+venv
+.idea
+**/__pycache__
+
+# Ignore rulesets so I don't accidently upload something I don't want to
+Rules/*
+
+# Don't ignore the default ruleset
+!Rules/Default
+!Rules/Russian
+
+# Don't include the build files for documents
+docs/build/*
+!docs/build/latex
+docs/build/latex/*
+!docs/build/latex/pcfgdevelopersguide.pdf
+
+# Don't commit save files
+*.sav
+*.omn
+*.bak

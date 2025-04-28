@@ -1,0 +1,2 @@
+  0%|                                                                                                            | 0/21015 [00:00<?, ?it/s]You're using a RobertaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+  0%|                                                                                              | 1/21015 [02:53<1011:18:58, 173.25s/it]

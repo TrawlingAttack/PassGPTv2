@@ -1,0 +1,53 @@
+  0%|                                                                                                                                              | 0/21015 [00:00<?, ?it/s]You're using a RobertaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+Traceback (most recent call last):
+  File "D:\NCKH_2024\PCFG_WEB\PCFG_WEB\PassGPT_new\Train_model.py", line 129, in <module>
+    trainer.train()
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python311\Lib\site-packages\transformers\trainer.py", line 2052, in train
+    return inner_training_loop(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python311\Lib\site-packages\transformers\trainer.py", line 2388, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python311\Lib\site-packages\transformers\trainer.py", line 3485, in training_step
+    loss = self.compute_loss(model, inputs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python311\Lib\site-packages\transformers\trainer.py", line 3532, in compute_loss
+    outputs = model(**inputs)
+              ^^^^^^^^^^^^^^^
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python311\Lib\site-packages\transformers\models\gpt2\modeling_gpt2.py", line 1316, in forward
+    transformer_outputs = self.transformer(
+                          ^^^^^^^^^^^^^^^^^
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python311\Lib\site-packages\transformers\models\gpt2\modeling_gpt2.py", line 1130, in forward
+    outputs = block(
+              ^^^^^^
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python311\Lib\site-packages\transformers\models\gpt2\modeling_gpt2.py", line 615, in forward
+    attn_outputs = self.attn(
+                   ^^^^^^^^^^
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\modules\module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\modules\module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python311\Lib\site-packages\transformers\models\gpt2\modeling_gpt2.py", line 545, in forward
+    attn_output = torch.nn.functional.scaled_dot_product_attention(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

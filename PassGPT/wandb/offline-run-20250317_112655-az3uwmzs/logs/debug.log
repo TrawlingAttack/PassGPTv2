@@ -1,0 +1,42 @@
+2025-03-17 11:26:55,487 INFO    MainThread:15528 [wandb_setup.py:_flush():67] Current SDK version is 0.19.8
+2025-03-17 11:26:55,487 INFO    MainThread:15528 [wandb_setup.py:_flush():67] Configure stats pid to 15528
+2025-03-17 11:26:55,487 INFO    MainThread:15528 [wandb_setup.py:_flush():67] Loading settings from C:\Users\minhk\.config\wandb\settings
+2025-03-17 11:26:55,487 INFO    MainThread:15528 [wandb_setup.py:_flush():67] Loading settings from D:\NCKH_2024\PCFG_WEB\PCFG_WEB\PassGPT\wandb\settings
+2025-03-17 11:26:55,488 INFO    MainThread:15528 [wandb_setup.py:_flush():67] Loading settings from environment variables
+2025-03-17 11:26:55,488 INFO    MainThread:15528 [wandb_init.py:setup_run_log_directory():647] Logging user logs to D:\NCKH_2024\PCFG_WEB\PCFG_WEB\PassGPT\wandb\offline-run-20250317_112655-az3uwmzs\logs\debug.log
+2025-03-17 11:26:55,488 INFO    MainThread:15528 [wandb_init.py:setup_run_log_directory():648] Logging internal logs to D:\NCKH_2024\PCFG_WEB\PCFG_WEB\PassGPT\wandb\offline-run-20250317_112655-az3uwmzs\logs\debug-internal.log
+2025-03-17 11:26:55,488 INFO    MainThread:15528 [wandb_init.py:init():761] calling init triggers
+2025-03-17 11:26:55,489 INFO    MainThread:15528 [wandb_init.py:init():766] wandb.init called with sweep_config: {}
+config: {'_wandb': {}}
+2025-03-17 11:26:55,489 INFO    MainThread:15528 [wandb_init.py:init():784] starting backend
+2025-03-17 11:26:55,792 INFO    MainThread:15528 [wandb_init.py:init():788] sending inform_init request
+2025-03-17 11:26:55,799 INFO    MainThread:15528 [backend.py:_multiprocessing_setup():101] multiprocessing start_methods=spawn, using: spawn
+2025-03-17 11:26:55,799 INFO    MainThread:15528 [wandb_init.py:init():798] backend started and connected
+2025-03-17 11:26:55,801 INFO    MainThread:15528 [wandb_init.py:init():891] updated telemetry
+2025-03-17 11:26:55,802 INFO    MainThread:15528 [wandb_init.py:init():915] communicating run to backend with 90.0 second timeout
+2025-03-17 11:26:57,253 ERROR   MainThread:15528 [wandb_init.py:init():1478] error in wandb.init()
+Traceback (most recent call last):
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python38\lib\site-packages\wandb\sdk\wandb_init.py", line 1468, in init
+    return wi.init(run_settings, run_config)
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python38\lib\site-packages\wandb\sdk\wandb_init.py", line 941, in init
+    result = wait_with_progress(
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python38\lib\site-packages\wandb\sdk\mailbox\wait_with_progress.py", line 24, in wait_with_progress
+    return wait_all_with_progress(
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python38\lib\site-packages\wandb\sdk\mailbox\wait_with_progress.py", line 87, in wait_all_with_progress
+    return asyncio_compat.run(progress_loop_with_timeout)
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python38\lib\site-packages\wandb\sdk\lib\asyncio_compat.py", line 30, in run
+    return future.result()
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python38\lib\concurrent\futures\_base.py", line 439, in result
+    return self.__get_result()
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python38\lib\concurrent\futures\_base.py", line 388, in __get_result
+    raise self._exception
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python38\lib\concurrent\futures\thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python38\lib\site-packages\wandb\sdk\lib\asyncio_compat.py", line 74, in run
+    return asyncio.run(self._run_or_cancel(fn))
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python38\lib\asyncio\runners.py", line 50, in run
+    loop.close()
+  File "C:\Users\minhk\AppData\Local\Programs\Python\Python38\lib\asyncio\proactor_events.py", line 679, in close
+    signal.set_wakeup_fd(-1)
+ValueError: set_wakeup_fd only works in main thread
+2025-03-17 11:26:58,257 INFO    MsgRouterThr:15528 [mailbox.py:close():129] Closing mailbox, abandoning 0 handles.

@@ -1,0 +1,39 @@
+{
+  "os": "Windows-10-10.0.22631-SP0",
+  "python": "3.11.2",
+  "startedAt": "2025-01-15T06:41:05.856845Z",
+  "program": "D:\\NCKH_2024\\PCFG_WEB\\PCFG_WEB\\PassGPT_new\\Train_model.py",
+  "codePath": "Train_model.py",
+  "email": "minhkauder700789@gmail.com",
+  "root": "D:\\NCKH_2024\\PCFG_WEB\\PCFG_WEB\\PassGPT_new",
+  "host": "ducminh",
+  "username": "minhk",
+  "executable": "C:\\Users\\minhk\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+  "codePathLocal": "Train_model.py",
+  "cpu_count": 6,
+  "cpu_count_logical": 12,
+  "gpu": "[NVIDIA GeForce GTX 1650 Ti]",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "268436500480",
+      "used": "236694347776"
+    }
+  },
+  "memory": {
+    "total": "16945106944"
+  },
+  "cpu": {
+    "count": 6,
+    "countLogical": 12
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA GeForce GTX 1650 Ti",
+      "memoryTotal": "4294967296",
+      "cudaCores": 1024,
+      "architecture": "Turing"
+    }
+  ],
+  "cudaVersion": "12.5"
+}

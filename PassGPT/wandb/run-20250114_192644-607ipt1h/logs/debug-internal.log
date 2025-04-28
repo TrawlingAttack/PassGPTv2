@@ -1,0 +1,10 @@
+{"time":"2025-01-14T19:26:44.9112252+07:00","level":"INFO","msg":"using version","core version":"0.18.3"}
+{"time":"2025-01-14T19:26:44.9112252+07:00","level":"INFO","msg":"created symlink","path":"D:\\NCKH_2024\\PCFG_WEB\\PCFG_WEB\\PassGPT_new\\wandb\\run-20250114_192644-607ipt1h\\logs\\debug-core.log"}
+{"time":"2025-01-14T19:26:44.9850573+07:00","level":"ERROR","msg":"dialing: google: could not find default credentials. See https://cloud.google.com/docs/authentication/external/set-up-adc for more information"}
+{"time":"2025-01-14T19:26:45.2067463+07:00","level":"INFO","msg":"created new stream","id":"607ipt1h"}
+{"time":"2025-01-14T19:26:45.2067463+07:00","level":"INFO","msg":"stream: started","id":"607ipt1h"}
+{"time":"2025-01-14T19:26:45.2067463+07:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"607ipt1h"}}
+{"time":"2025-01-14T19:26:45.2067463+07:00","level":"INFO","msg":"handler: started","stream_id":{"value":"607ipt1h"}}
+{"time":"2025-01-14T19:26:45.2067463+07:00","level":"INFO","msg":"sender: started","stream_id":{"value":"607ipt1h"}}
+{"time":"2025-01-14T19:26:45.7915055+07:00","level":"INFO","msg":"wandb-core","!BADKEY":null}
+{"time":"2025-01-14T19:26:45.7930511+07:00","level":"INFO","msg":"Starting system monitor"}
