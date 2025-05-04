@@ -4,6 +4,9 @@ from flask_socketio import SocketIO
 import threading
 import queue
 import sys
+import psutil
+import cpuinfo
+import GPUtil
 from datetime import datetime
 from check_run import *
 from module.generate_file import Generate_Model
@@ -13,13 +16,7 @@ from module.pcfg_sort import *
 # Configure
 app = Flask(__name__)
 socketio = SocketIO(app, cors_allowed_origins="*")  # Cho phép kết nối từ mọi nguồn
-
-# #########                                             GENERATION PASSWORD                                 ############################
-# Queue để lưu log
 log_queue = queue.Queue()
-list_pass = []
-
-
 # Redirect stdout để đưa log vào Queue
 class StreamToQueue:
     def __init__(self, queue):
@@ -47,10 +44,42 @@ sys.stderr = StreamToQueue(log_queue)
 def stream():
     return Response(generate_log_stream(), content_type='text/event-stream')
 
-# Generate_password
+
+
+# #########                                             DASHBOARD                                           ############################
 @app.route("/")
 def main():
-    return render_template('index.html')
+    # Lấy thông tin CPU, RAM, GPU
+    # Get CPU model name using cpuinfo
+    info = cpuinfo.get_cpu_info()
+    cpu_name = info.get('brand_raw', 'Unknown CPU')
+
+    # Get total RAM in GB
+    ram = psutil.virtual_memory()
+    ram_gb = ram.total / (1024 ** 3)  # Convert bytes to GB
+    ram_name = f"{ram_gb:.2f} GB RAM"
+
+    # Get GPU names using GPUtil
+    gpus = GPUtil.getGPUs()
+    if gpus:
+        # Join all GPU names if multiple
+        gpu_name = ', '.join(gpu.name for gpu in gpus)
+    else:
+        gpu_name = 'No GPU detected'
+    return render_template('index.html', cpu_name=cpu_name, ram_name=ram_name, gpu_name=gpu_name)
+
+
+
+
+# #########                                             GENERATION PASSWORD                                 ############################
+# Queue để lưu log
+
+list_pass = []
+
+# Generate_password
+@app.route("/index1.html")
+def index1():
+    return render_template('index1.html')
 
 
 # ==== Thread Wrapper ====

@@ -15,7 +15,7 @@ models = [
     },
     {
         "name": "PassGPTv2",
-        "url": "https://drive.google.com/uc?id=1ZL7R0Ujf7jn_e_IUeViFpKhYYhfX3uBx",
+        "url": "https://drive.google.com/file/d/1ZL7R0Ujf7jn_e_IUeViFpKhYYhfX3uBx",
         "zip_path": "PassGPTv2/model_passgptv2.zip",
         "extract_path": "PassGPTv2/model_passgptv2",
         "required_files": ["model_passgptv2"]

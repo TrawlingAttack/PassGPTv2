@@ -109,3 +109,5 @@ xxhash==3.5.0
 yarl==1.15.2
 zipp==3.15.0
 gdown
+py-cpuinfo
+gputil
