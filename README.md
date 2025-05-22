@@ -15,7 +15,7 @@ Vào terminal của folder
 
 Tải các thư viện cần thiết:
 
-    pip install -r requirements.txt
+    pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu121
   
 Khởi chạy file app.py:
 
