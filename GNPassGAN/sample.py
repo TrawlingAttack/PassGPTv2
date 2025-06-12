@@ -112,11 +112,12 @@ class Generator(nn.Module):
         return output.view(shape) # (BATCH_SIZE, SEQ_LEN, len(charmap))
         
 def generate_samples(netG):
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     noise = torch.randn(args.batch_size, 128)
     if use_cuda:
-        noise = noise.cuda(gpu)
+        noise = noise.to(device)
     with torch.no_grad():
-            noisev = noise.cuda()
+            noisev = noise.to(torch.device("cpu"))
     samples = netG(noisev)
     samples = samples.view(-1, args.seq_length, len(charmap))
     # print samples.size()
@@ -131,7 +132,7 @@ def generate_samples(netG):
             decoded.append(inv_charmap[samples[i][j]])
         decoded_samples.append(tuple(decoded))
     return decoded_samples
-
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # ==================Definition End======================
 args = parse_args()
 # Dictionary
@@ -145,15 +146,15 @@ with open(os.path.join(args.input_dir, 'charmap.pickle'), 'rb') as f:
     charmap = pickle.load(f, encoding='latin1')
 
 torch.manual_seed(1)
-use_cuda = torch.cuda.is_available()
+use_cuda = torch.device("cpu")
 if use_cuda:
     gpu = 0
 
 netG = Generator()
 if use_cuda:
-    netG = netG.cuda(gpu)
+    netG = netG.to(device)
 # load weights
-netG.load_state_dict(torch.load('GNPassGAN/output/checkpoints/netG_epoch_200000.pth'))
+netG.load_state_dict(torch.load('GNPassGAN/output/checkpoints/netG_epoch_200000.pth',map_location=torch.device('cpu')))
 
 
 def RunGNPassGAN(max_lenght,max_num,socketio,list_prefix):
@@ -180,6 +181,7 @@ def RunGNPassGAN(max_lenght,max_num,socketio,list_prefix):
         samples = []
         # Gửi những mật khẩu còn lại sau vòng lặp
     time.sleep(2)
+    socketio.emit('progress_update', {'progress': 100})  # Gửi dữ liệu đến client
     for idx,i in enumerate(list_pass):
         if(idx < 1000):
             print(i)

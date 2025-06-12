@@ -104,66 +104,87 @@ function checkStruction(prefix, struction) {
   let structionError = document.getElementById('structionError');
   structionError.innerText = ''; // Clear lỗi cũ
 
+  // ✅ Chuyển struction thành mảng tương tự
+  const structionArr = struction.trim().split(/\s+/); // VD: ["L5", "N6"]
+
+  // ✅ Kiểm tra nếu struction không đúng định dạng
+  if (!structionArr.every(token => /^[LUNS]\d+$/.test(token))) {
+    structionError.innerText = '❌ Cấu trúc không đúng định dạng!';
+    setTimeout(() => {
+      structionError.innerText = '';
+    }, 1500);
+    return false;
+  }
+
+  // ✅ Kiểm tra tổng độ dài pattern
+  const totalLength = structionArr.reduce((sum, token) => {
+    const len = parseInt(token.slice(1));
+    return sum + (isNaN(len) ? 0 : len);
+  }, 0);
+
+  if (totalLength < 4 || totalLength > 14) {
+    structionError.innerText = '❌ Không hợp lệ: tổng độ dài phải từ 4 đến 14 ký tự!';
+    setTimeout(() => {
+      structionError.innerText = '';
+    }, 1500);
+    return false;
+  }
+
+  // ✅ Tách prefix thành cấu trúc kiểu L5, N2, U3...
   const result = [];
   let currentType = null;
   let currentLength = 0;
 
-  // Tách prefix thành cấu trúc kiểu L5, N2, U3...
-  if (prefix.length > 0) {
-      for (let i = 0; i < prefix.length; i++) {
-          const char = prefix[i];
-          let type = null;
-          if (/[a-z]/.test(char)) type = 'L';
-          else if (/[A-Z]/.test(char)) type = 'U';
-          else if (/[0-9]/.test(char)) type = 'N';
-          else type = 'S';
+  for (let i = 0; i < prefix.length; i++) {
+    const char = prefix[i];
+    let type = null;
+    if (/[a-z]/.test(char)) type = 'L';
+    else if (/[A-Z]/.test(char)) type = 'U';
+    else if (/[0-9]/.test(char)) type = 'N';
+    else type = 'S';
 
-          if (type === currentType) {
-              currentLength++;
-          } else {
-              if (currentType !== null) {
-                  result.push(currentType + currentLength);
-              }
-              currentType = type;
-              currentLength = 1;
-          }
-      }
-
+    if (type === currentType) {
+      currentLength++;
+    } else {
       if (currentType !== null) {
-          result.push(currentType + currentLength);
+        result.push(currentType + currentLength);
       }
+      currentType = type;
+      currentLength = 1;
+    }
   }
 
-  // Chuyển struction thành mảng tương tự
-  const structionArr = struction.trim().split(/\s+/); // VD: ["L5", "N6"]
+  if (currentType !== null) {
+    result.push(currentType + currentLength);
+  }
 
-  // So sánh từng phần tử
+  // ✅ So sánh từng phần tử
   if (result.length > structionArr.length) {
-      structionError.innerText = '❌ Không hợp lệ: cấu trúc vượt quá struction!';
+    structionError.innerText = '❌ Không hợp lệ: cấu trúc vượt quá struction!';
+    setTimeout(() => {
+      structionError.innerText = '';
+    }, 1500);
+    return false;
+  }
+
+  for (let i = 0; i < result.length; i++) {
+    const rType = result[i][0];
+    const rLen = parseInt(result[i].slice(1));
+
+    const sType = structionArr[i][0];
+    const sLen = parseInt(structionArr[i].slice(1));
+
+    if (rType !== sType || rLen > sLen) {
+      structionError.innerText = '❌ Không hợp lệ: cấu trúc không khớp!';
       setTimeout(() => {
         structionError.innerText = '';
       }, 1500);
       return false;
+    }
   }
 
-  for (let i = 0; i < result.length; i++) {
-      const rType = result[i][0];
-      const rLen = parseInt(result[i].slice(1));
-
-      const sType = structionArr[i][0];
-      const sLen = parseInt(structionArr[i].slice(1));
-
-      if (rType !== sType || rLen > sLen) {
-          structionError.innerText = '❌ Không hợp lệ: cấu trúc không khớp!';
-          setTimeout(() => {
-            structionError.innerText = '';
-          }, 1500);
-          return false;
-      }
-  }
-
-  // Nếu hợp lệ
-  structionError.innerText = '✅ Hợp lệ, đã thêm điều kiện vào bảng! ';
+  // ✅ Nếu hợp lệ
+  structionError.innerText = '✅ Hợp lệ, đã thêm điều kiện vào bảng!';
   setTimeout(() => {
     structionError.innerText = '';
   }, 1500);
@@ -183,13 +204,12 @@ function appendRow() {
     return;
   }
 
-  const newItem = { prefix, struction };
-  if (prefix && struction){
-    if(!checkStruction(prefix,struction)){
-      return;
-    };
+  // Luôn kiểm tra nếu có struction (kể cả prefix rỗng)
+  if (struction && !checkStruction(prefix, struction)) {
+    return;
   }
 
+  const newItem = { prefix, struction };
   dataRows.push(newItem);
   list_prefix.push(newItem);
 
@@ -203,6 +223,7 @@ function appendRow() {
   renderTable();
   renderPagination();
 }
+
 
 function deleteRow(index) {
   const realIndex = (currentPage - 1) * rowsPerPage + index;
@@ -223,7 +244,7 @@ function deleteRow(index) {
   renderTable();
   renderPagination();
 }
-
+renderTable()
 function renderTable() {
   const tbody = document.getElementById("tableBody");
   tbody.innerHTML = "";
@@ -233,7 +254,7 @@ function renderTable() {
 
   // Kiểm tra xem option5 có đang được chọn không
   const selectedId = document.querySelector('input[name="options"]:checked')?.value;
-  const showStruction = selectedId === '4';
+  const showStruction = (selectedId === '4' || selectedId === '3');
 
   for (let i = start; i < end; i++) {
     const row = dataRows[i];
@@ -296,7 +317,7 @@ function renderPagination() {
 }
 
 // Gắn sự kiện cho nút Append
-document.querySelector(".btn-info.float-right").addEventListener("click", function (e) {
+document.querySelector(".btn-success.float-right").addEventListener("click", function (e) {
   e.preventDefault();
   appendRow();
 });
@@ -317,7 +338,7 @@ if (document.querySelector('input[name="options"]')) {
       selected.parentElement.classList.add('active');
 
       const selectedId = selected.value;
-      const isOption5 = selectedId === '4';
+      const isOption5 = (selectedId === '4' || selectedId === '3');
 
       const structionInputGroup = document.querySelector('#struction')?.closest('.form-group');
       if (structionInputGroup) {
@@ -378,6 +399,7 @@ document.getElementById("submitButton").addEventListener("click", (e) => {
   downloadButton.disabled = true;
 
   const selectedOption = document.querySelector('input[name="options"]:checked')?.value || "None";
+  const selectedCountry = document.querySelector('.js-example-templating')?.value || "all";
   const maxlength = document.getElementById("maxlenght")?.value;
   const maxnum = document.getElementById("maxnum")?.value;
   // Kiểm tra hợp lệ
@@ -391,6 +413,7 @@ document.getElementById("submitButton").addEventListener("click", (e) => {
 
   const data = {
     list_prefix: JSON.stringify(list_prefix),
+    country: selectedCountry,  // thêm trường mới
     option: selectedOption,
     maxlength: maxlength,
     maxnum: maxnum,

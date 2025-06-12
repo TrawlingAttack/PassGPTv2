@@ -263,7 +263,7 @@ $(function () {
         pointStrokeColor    : 'rgba(76, 73, 76, 0.7)',
         pointHighlightFill  : 'rgba(76, 73, 76, 0.7)',
         pointHighlightStroke: 'rgba(76, 73, 76, 0.7)',
-        data                : [28, 48, 40, 19, 86, 27]
+        data                : [0.26, 1.62, 7.03, 14.10 , 16.10, 22.4]
       },
       {
         label               : 'Omen',
@@ -274,7 +274,7 @@ $(function () {
         pointStrokeColor    : '#c1c7d1',
         pointHighlightFill  : 'rgba(130, 125, 130, 0.7)',
         pointHighlightStroke: 'rgba(130, 125, 130, 0.7)',
-        data                : [15, 89, 10, 50, 56, 15]
+        data                : [0.49, 2.24, 6.24, 12.23, 18.12, 23.12]
       },
       {
         label               : 'PassGAN',
@@ -285,7 +285,7 @@ $(function () {
         pointStrokeColor    : '#c1c7d1',
         pointHighlightFill  : 'rgba(0, 209, 29, 0.7)',
         pointHighlightStroke: 'rgba(0, 209, 29, 0.7)',
-        data                : [35, 69, 10, 11, 96, 55]
+        data                : [0.80, 3.11, 8.24, 16.32, 24.21, 28.87]
       },
       {
         label               : 'PassGPT',
@@ -296,7 +296,7 @@ $(function () {
         pointStrokeColor    : '#c1c7d1',
         pointHighlightFill  : 'rgba(0, 2, 209, 0.7)',
         pointHighlightStroke: 'rgba(0, 2, 209, 0.7)',
-        data                : [95, 69, 50, 81, 8, 12]
+        data                : [0.73, 5.60, 21.43, 41.93, 56.43, 63.24]
       },
       {
         label               : 'PassGPTv2',
@@ -307,7 +307,7 @@ $(function () {
         pointStrokeColor    : '#c1c7d1',
         pointHighlightFill  : '#fff',
         pointHighlightStroke: 'rgba(209, 0, 193, 0.7)',
-        data                : [35, 29, 90, 51, 46, 75]
+        data                : [1.00, 7.86, 27.23, 48.75, 66.23, 79.12]
       },
     ]
   }

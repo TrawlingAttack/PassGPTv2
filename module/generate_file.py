@@ -8,7 +8,8 @@ tf.disable_v2_behavior()
 
 
 class Generate_Model():
-    def __init__(self,max_lenght,max_num,socket,option_model,list_prefix=[]):
+    def __init__(self,country,max_lenght,max_num,socket,option_model,list_prefix=[]):
+        self.country = country
         self.max_lenght = int(max_lenght)
         self.max_num = int(max_num)
         self.option_model = option_model
@@ -28,8 +29,8 @@ class Generate_Model():
         elif(self.option_model == 2):
             list_password = RunGNPassGAN(self.max_lenght,self.max_num,self.socket,self.list_prefix)
         elif(self.option_model == 3):
-            list_password = RunPassGPT(self.max_lenght,self.max_num,self.socket,self.list_prefix)
+            list_password = RunPassGPT(self.country,self.max_lenght,self.max_num,self.socket,self.list_prefix)
         elif(self.option_model == 4):
-            list_password = RunPassGPT2(self.max_lenght,self.max_num,self.socket,self.list_prefix)
+            list_password = RunPassGPT2(self.country,self.max_lenght,self.max_num,self.socket,self.list_prefix)
         return list_password
 

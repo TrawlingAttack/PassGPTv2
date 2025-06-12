@@ -1,8 +1,8 @@
 const analyzedFiles = []; // Mảng lưu kết quả các file
 let currentPage = 1;
-const itemsPerPage = 3;
-
-
+const itemsPerPage = 4;
+const btn_start = document.getElementById("startBtn");
+updateStartButtonState();
 function renderTable(page) {
     console.log(analyzedFiles);
     const tableBody = document.querySelector("table tbody");
@@ -46,6 +46,7 @@ function renderTable(page) {
         }
   
         renderTable(currentPage);
+        updateStartButtonState();
       });
     });
   }
@@ -81,6 +82,19 @@ function renderPagination() {
     if (page < 1 || page > totalPages) return;
     currentPage = page;
     renderTable(currentPage);
+    updateStartButtonState();
+
+}
+function updateStartButtonState() {
+  if (analyzedFiles.length === 0) {
+    btn_start.className = "btn btn-block btn-success btn-lg";
+    btn_start.innerText = "START";
+    btn_start.disabled = true;
+  } else {
+    btn_start.className = "btn btn-block btn-success btn-lg";
+    btn_start.innerText = "START";
+    btn_start.disabled = false;
+  }
 }
 
 const overlay = document.getElementById("overlay"); 
@@ -131,6 +145,7 @@ document.getElementById("chooseFilesBtn").addEventListener("click", function () 
           overlay.style.display = "none";
           // Cập nhật bảng và phân trang
           renderTable(currentPage);
+          updateStartButtonState();
         })
         .catch((err) => {
           overlay.style.display = "none";
@@ -263,7 +278,7 @@ socket.on("progress_update", (data) => {
           progressBar.setAttribute("aria-valuenow", 0);
       }, 1500);
 
-      btn_start.className = "btn btn-block btn-primary btn-lg";
+      btn_start.className = "btn btn-block btn-success btn-lg";
       btn_start.innerText = "START";
       btn_start.disabled = false;
   }
@@ -274,8 +289,8 @@ socket.on("disconnect", () => {
     console.log("🔴 Disconnected from server");
 });
 
-const btn_start = document.getElementById("startBtn");
-document.querySelector(".btn-primary.btn-lg").addEventListener("click", function (event) {
+
+document.querySelector(".btn-success.btn-lg").addEventListener("click", function (event) {
   event.preventDefault(); // ⛔ Ngăn form bị submit gây reload trang
   // Ẩn progress & reset trước khi gửi request
   progressContainer.style.display = "none";

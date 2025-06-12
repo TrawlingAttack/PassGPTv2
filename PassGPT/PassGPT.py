@@ -6,18 +6,71 @@ from datasets import load_dataset
 from transformers import RobertaTokenizerFast
 import numpy as np
 import random
+import string
 
+def pattern_to_string(pattern):
+    # Bảng ánh xạ ký hiệu sang ký tự đại diện
+    symbol_map = {
+        'L': 'l',  # lowercase
+        'U': 'u',  # uppercase
+        'N': 'n',  # number
+        'S': 's',  # special character
+    }
+
+    result = ""
+    parts = pattern.split()
+
+    for part in parts:
+        symbol = part[0]
+        count = int(part[1:])
+        if symbol in symbol_map:
+            result += symbol_map[symbol] * count
+        else:
+            raise ValueError(f"Unknown symbol: {symbol}")
+
+    return result
+ 
 def Generate_Password(seed_offset,prefix,tokenizer,model,maxchars,batch_size,num_beams,top_p,top_k,temperature):
     torch.manual_seed(seed_offset)
+    all_tokens = [[i] for i in range(len(tokenizer))]
     with torch.no_grad():
         input_ids = None
         if(prefix == ""):
             input_ids = torch.tensor([[tokenizer.bos_token_id]])
+        elif(prefix["prefix"] != "" and prefix["struction"] == ""):
+            input_ids = tokenizer.encode(prefix["prefix"], return_tensors="pt", add_special_tokens=False)
         else:
-            input_ids = tokenizer.encode(prefix, return_tensors="pt", add_special_tokens=False)
-                #print(input_ids)
-        #input_ids = torch.clamp(input_ids, min=0, max=model.config.vocab_size - 1)
-
+            if prefix["prefix"] == "":
+                prefix_prefix = "<s>"
+                struction = pattern_to_string(prefix["struction"])
+                last_num_struction = len(struction)-0
+                len_prefix = 1
+            else:
+                len_prefix = len(prefix["prefix"])
+                prefix_prefix = prefix["prefix"]
+                struction = pattern_to_string(prefix["struction"])
+                last_num_struction = len(struction)-len_prefix
+            
+            last_struction = struction[-last_num_struction:] 
+            input_ids = tokenizer.encode(prefix_prefix, return_tensors="pt", add_special_tokens=False)
+            generation = input_ids
+            for char in last_struction:
+                if char == "u":
+                    bad_tokens = [i for i in all_tokens if i not in tokenizer(list(string.ascii_uppercase), add_special_tokens=False).input_ids]
+                elif char == "l":
+                    bad_tokens = [i for i in all_tokens if i not in tokenizer(list(string.ascii_lowercase), add_special_tokens=False).input_ids]
+                elif char == "n":
+                    bad_tokens = [i for i in all_tokens if i not in tokenizer(list(string.digits), add_special_tokens=False).input_ids]
+                elif char == "s":
+                    bad_tokens = [i for i in all_tokens if i not in tokenizer(list(string.punctuation), add_special_tokens=False).input_ids]
+                generation = model.generate(generation, do_sample=True, max_length=len_prefix+1, pad_token_id=tokenizer.pad_token_id, num_return_sequences=1,  bad_words_ids=bad_tokens)
+                len_prefix += 1
+            
+            decoded = tokenizer.batch_decode(generation.tolist())
+            decoded_clean = [y.replace("<s>", "").split("</s>")[0] for y in decoded] # Get content before end of password token
+            del generation
+            del decoded
+            return decoded_clean
         if tokenizer.pad_token_id is None:
             tokenizer.pad_token = tokenizer.eos_token
 
@@ -32,12 +85,20 @@ def Generate_Password(seed_offset,prefix,tokenizer,model,maxchars,batch_size,num
         del g
         del decoded
     return decoded_clean
-def RunPassGPT(lenght_pass, number_pass,socketio,list_prefix):
+def RunPassGPT(country,lenght_pass, number_pass,socketio,list_prefix):
     global list_new_password  # Thêm dòng này để dùng biến toàn cục
     list_new_password = []
+    if country in ["vn", "china", "indo", "uk"]:
+        token = 96
+    elif country in ["malaysia", "us", "taiwan", "den"]:
+        token = 99
+    elif country in ["canada"]:
+        token = 96
+    else:
+        token = 99
     parser = argparse.ArgumentParser()
     parser.add_argument("--model_path", help="Path to PassGPT checkpoint or Huggingface name", type=str, required=False)
-    parser.add_argument("--tokenizer_path", help="Path to pre-trained tokenizer or Huggingface name. If none, it will be set to model_path", type=str, default="PassGPT/configs/byte_bpe_tokenizer_99")
+    parser.add_argument("--tokenizer_path", help="Path to pre-trained tokenizer or Huggingface name. If none, it will be set to model_path", type=str, default=f"PassGPT/configs/byte_bpe_tokenizer_{token}_{country}")
     parser.add_argument("--train_data_path", help="path to training data", type=str, required=False)
     parser.add_argument("--eval_data_path", help="path to evaluation data", type=str, required=False)
     parser.add_argument("--out_path", help="Path to store the generations", type=str, required=False)
@@ -64,7 +125,7 @@ def RunPassGPT(lenght_pass, number_pass,socketio,list_prefix):
     
     # assert not os.path.isfile(os.path.join(args.out_path, args.filename)), "The provided output path already exists, please provide a unique path."
     # Path(args.out_path).mkdir(parents=True, exist_ok=True)
-    args.model_path = "PassGPT/model_passgpt/model_passgpt"
+    args.model_path = f"PassGPT/model/model_passgpt_{country}/model_passgpt_{country}"
     # Load tokenizer
     if args.tokenizer_path is None:
         args.tokenizer_path = args.model_path

@@ -125,7 +125,7 @@ class OmenScorer:
 
         # Open the file for reading
         try:
-            with open(full_file_path, 'r') as file:
+            with open(full_file_path, 'r', encoding='utf-8') as file:
                 for line in file:
                     line = line.rstrip('\n\r').split('\t')
 
@@ -165,7 +165,7 @@ class OmenScorer:
 
         # Open the file for reading
         try:
-            with open(full_file_path, 'r') as file:
+            with open(full_file_path, 'r', encoding='utf-8') as file:
                 for line in file:
                     line = line.rstrip('\n\r').split('\t')
 
@@ -207,7 +207,7 @@ class OmenScorer:
 
         # Open the file for reading
         try:
-            with open(full_file_path, 'r') as file:
+            with open(full_file_path, 'r', encoding='utf-8') as file:
                 for line in file:
                     line = line.rstrip('\n\r')
 
