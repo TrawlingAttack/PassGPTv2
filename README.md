@@ -22,4 +22,4 @@ Nếu thoát không sử dụng ấn tổ hợp phím Ctrl + C để thoát.
 
 Vì dung lượng không cho phép hệ thống sẽ tự động tải model về cho PassGPT và PassGPTv2, bạn sẽ phải đợi khi thông báo có thể vào link.
 
-Vào link http://127.0.0.1:5000 để sử dụng hệ thống.
+Vào link (http://172.17.0.1:5000) để sử dụng hệ thống.
