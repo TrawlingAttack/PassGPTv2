@@ -92,7 +92,7 @@ def RunPassGPT(country,lenght_pass, number_pass,socketio,list_prefix):
         token = 96
     elif country in ["malaysia", "us", "taiwan", "den"]:
         token = 99
-    elif country in ["canada"]:
+    elif country in ["canada","all"]:
         token = 96
     else:
         token = 99
