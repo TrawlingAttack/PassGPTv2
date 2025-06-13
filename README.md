@@ -11,13 +11,11 @@ Vào terminal của folder
 Build docker:
 
     sudo systemctl restart docker
-
     sudo docker build -t passgptv2 .
   
 Khởi chạy file app.py:
 
-    sudo docker run -it --entrypoint /bin/bash passgptv2
-
+    sudo docker run -it -p 5000:5000 passgptv2 /bin/bash
     python3.8 app.py
   
 Nếu thoát không sử dụng ấn tổ hợp phím Ctrl + C để thoát.
