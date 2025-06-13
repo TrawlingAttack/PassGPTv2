@@ -12,7 +12,7 @@ COPY . /app
 RUN pip3.8 install --upgrade pip
 RUN pip3.8 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 RUN pip3.8 install -r requirements.txt
-
+RUN python3.8 check_run.py
 # Expose port 5000 để Flask có thể truy cập từ bên ngoài
 EXPOSE 5000
 
