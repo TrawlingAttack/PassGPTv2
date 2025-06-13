@@ -9,11 +9,13 @@ Quá trình training (left) và quá trình sinh (right) của PassGPTv2. Các s
 Vào terminal của folder
 
 Build docker:
+
     sudo systemctl restart docker
 
     sudo docker build -t passgptv2 .
   
 Khởi chạy file app.py:
+
     sudo docker run -it --entrypoint /bin/bash passgptv2
 
     python3.8 app.py
