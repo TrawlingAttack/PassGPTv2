@@ -81,7 +81,7 @@ def save_output(passwords, out_path='optimized_guess_list.txt'):
             f.write(pwd + '\n')
 
 def guessfuse(input_files):
-    validation_file = 'Dataset/rockyou.txt'
+    validation_file = './Dataset/rockyou.txt'
     target_size = 10000
  
 
